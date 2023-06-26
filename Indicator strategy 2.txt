@@ -1,0 +1,269 @@
+Hope this helps: 
+ALL indicators should not lag, if even 1 lags the other I will get false signals. Especially with the macd, mas and ADX, so please use a formal that doesn’t lag the price. The default mt4 option intentionally are made to lag to make traders lose. 
+Sell MAs: 
+Cross from above to below only, sell only cares about sell signals.
+The signal MA, is what determines direction and is the second of the 3 MAs the moment fast MA crosses signal MA, the EA should turn off buy trends for buy and reverse sells.
+3 ways to allow entry as individual options: Fast cross slow, fast cross signal, and signal cross slow. 
+Sell orders will use the Buy MAs to close orders if the MA exit is enabled. 
+Dragon Color.
+Arrows should be exactly at the location the fast crosses Signal; this doesn’t mean trades will open I means that that is the direction the ADX needs to confirm, if the ADX never confirms that direction as a positive then remove then arrow.
+
+Buy MAs:
+Cross from below to above only, buy MAs only cares about Buy signals.
+The signal MA, is what determines direction and is the second of the 3 MAs, the moment fast MA crosses signal MA, the EA should turn off sell trends for sells and reverse buys. 
+3 ways to allow entry as individual options: Fast cross slow, fast cross signal, and signal cross slow. 
+Angel color
+
+Allowing entry for buys means that buys and reverse sell (if reverse sells are on, I could turn this off) will be the only option the EA has to consider when entering trade. It does not mean, immediate enter the trade. Vice versa for sells. The foundation for the strategy is already set for the most part, just have to add in the swing con mode and the single mode and the trail stop and the lot sizing etc.
+
+So, what allowing means really means is, in buy trend, turn off sell trend, in sell trend turn off buy trend, when adx is below level, turn off both buy and sell trend. I will have the option to turn off reverse orders as I see fit so it might just be turning off the buy and sell. These arrows do not mean force enter trades.
+
+Arrows should not be in locations that do not have a fast-crossing signal MA.
+
+
+
+
+
+
+
+ADX:
+The adx comes into play when the EA confirms a direction, meaning the Fast has crossed the signal and is looking to move into a direction. The adx will either confirm or deny the signal. I will set a period, level etc. and only when the adx is above level will trade enter. I also do not want DI lines; I want the color to be filled in the empty space of the adx. So, when the Buy is above the sell, the Angel Color will fill the during of that space, and when the sell di is above the buy, the Dragon color will fill that space. 
+ADX also allows Exit: So, if the Sell order is entered using the Sell MAs, and then the Buys MAs cross from below to above, the ADX will allow close if the DI for buy crosses the above the DI for sell. But represented as the filled in color. No, di lines. This is why it’s important there is no lag formula. 
+
+MACD: Is not an entry signal. It manages open orders.
+After MAs and ADX allow an order to open, the MACD should come into play the MACD.
+If im in a sell, trade for instance, and the EMA is below the macd signal line, no buys will open at all. 
+Only sells, and sells will not close due to buy crosses. In the case of trend continuation, the MACD can override the MA and ADX signals. The MACD should re-enable the MAs ADX when the trend direction changes from sell to buy on the MACD.
+
+Also think I should mention that the Stoploss should override the MACD if the MACD would become a stop loss for a trade gone negative, the way this is intended to work is more of a safe guard to take profit when a trend changes, not to be used as a stop loss, most of my filters should prevent the MACD from being used as a Stop loss, I mentioned before. I do not want the MACD interfering with the Stoploss I have set so instead of the MACD closing it should instead just be an option to turn off and on. I don’t think this will be a problem when you fix the part where the MACD is being used as an entry, as of right now the signals are showing buy signals where sell signals should be and the ADX is not a part of the super indicator yet. Etc. (Use macd as stop loss as option to turn off or on)
+Buy MACD and SELL MACD work in modes.
+Everything above the Signal line should be Angel color
+Everything below signal line should be dragon color.
+Area where the ADX is below level should be King color.
+The nudge parameters play with what the EA considers a trend continuation or not. And helps in cases where I want let’s say 4 MACD SMA to move just a bit in a backwards or forwards up or down direction. Maybe the I want more of a leading signal or maybe 4 SMA is just off a bit. 
+
+
+
+Filters:
+There are several filters in my EA already:
+Candle filter:
+There is the candle filter for sells and buys, and reverse sells and reverse buys. 
+ADX filter:
+In addition to that the ADX acts as a filter for choppy markets not allowing trades to open that are below level and not the correct color when above level. And allowing exit when the color is opposite that of the trend.
+MACD filter: MACD filters out false take profits, and manages open orders in the event a false signal was opened. It can buy pass the MA and ADX exit points in the even that the EMA is still below signal macd during points in time that sell order are attempting to exit with the adx and MA signal. 
+
+BE pivot filter:
+This filter acts as a protection against pivot points and the MACD not allowing take profit exits. The BE pivot filter will over ride the MACD and act as a gate not allowing anything to pass. And also acts to ensure no more same direction trade open for that time period. If the price for the MH for buy trend for that time frame is passed continuing in the same direction, trades should be allowed to continue opening again for the direction respecting the next time frame as the next BE pivot filter. 
+Example: 1 minute be pivot filter is reached, the MH for the 1M was pasted for a continuation, orders can now open again and respect the next time frames be pivot filter percent. 
+
+Buy Sell Volume filter:
+Buy volume filter: Volume below specified amount will be King color and will not allow trades to open.
+* Volume above specified amount will also be king color and will not allow trades to open.
+* Volume within trade range will be allowed to open, with the Angel Color.
+Sell volume Filter: Volume below specified amount will be King color and will not allow trades to open.
+* Volume above specified amount will also be king color and will not allow trades to open.
+* Volume within trade range will be allowed to open, with the Dragon Color.
+
+
+
+
+
+Take profit: 
+MACD can override take profit for continuation, but cannot override the BE Pivot filter, the trail stops, or the stop loss. MACD can only override MACD STOPLOSS exit if enable to do so.
+To be clear, if an order is to go into the negative profit, because of a trend change, the order should respect the ATR stoploss, break even, or trail stop. Unless MACD Stop loss is enabled. MACD take profit works in a similar manner but operates in the profit, not the negative. 
+I have a percent take profit
+* Uses percent from MH and ML depending on if it’s a buy or sell, to then take profit at a percent level for a buy order the o% would be the ML and the 100% would be the MH.
+An MA cross take profit
+* Seeks to take profit when there is a cross on the opposite MA.
+* Sell order opens, check buys MA cross from below to above, in order to exit. 
+A MACD take profit.
+* Example: Sell order opens, and will take profit when the EMA crosses from below to above the signal line. Buy order opens and will take profit when the EMA crosses from above to below the signal line. 
+And PSAR take profit.
+* Example: Sells take profit when the PSAR goes from above to below.
+* Example: Buys take profit when the PSAR goes from below to above.
+
+And MH ML take profit.
+* Option to specify which MH or ML time period to take profit at.  1m 5m 15m etc.
+* Example: On 1m time frame, Sell takes profit at 5m ML
+* Example: On 1m time frame, Buy take profit at 15m MH.
+And a minimum risk reward take profit.
+* Risk to reward take profit use the stop loss to calculate the take profit. (Can only be used for ATR.)
+* Example: 1:1, 1:2, 1:3, 1:4 etc.
+
+
+
+
+
+Stop Loss:
+MACD
+* Used in the event that the trend changes and the ADX was not above level during the change. 
+
+Trail Stop
+* Used as another take profit, by moving stop loss. 
+* Buy, Sell, Reverse Buy, and Reverse Sell, all have their own TS.
+Break Even Pivot Filter
+* Used as another take profit, by moving the stop loss.
+* Already explained
+ATR Stop loss.
+* Checks the ATR to determine stoploss
+* Will have option for 1, 2,3,4 etc. ATR to specify what to multiply the atr by for stop loss.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Lot size:
+Option to use ATR for automatic lot sizing calculation algorithm based on the balance of the account I specify.
+So, If I have 10k in my account but only want the EA to recognize 1000 dollars. 
+The EA will use the 1k instead of the 10k balance to determine lot size. 
+Buy Lot size options: Manual, percent margin, percent equity, account balance, for each buy and sell option individually.
+The algorithm should use the increase and decrease function to determine the lot size needed to bring a negative trade back to a positive account balance automatically using the ATR for stoploss. 
+The max drawdown portion should make sure the drawdown can not blow the account margin or w.e with the lot size. So, I specify the drawdown.
+
+Buy lots Base: example: 10% margin
+Max Lots: Total amount of lots buy trades can open: 2
+Win increase: If the trade is won, increase by 4% margin
+or
+Win decrease: If trade is won, decrease by 7% margin
+AND
+Loss increase: If trade is lost, increase by 4% margin
+or
+Loss decrease: if trade is lost, decrease by 7% margin
+ Sell lots base: example: manual 0.1
+Max Lots: total amount of lots sells trades can open: 2
+Win increase: If the trade is won, increase by 0.02
+or
+Win decrease: If the trade is won, decrease by 0.02
+AND
+Loss increase: if trade is lost, increase by 0.03
+or
+Loss decrease: If trade is lost, decrease by 0.07
+ 
+
+
+Reverse Buy base: example: equity 1%
+MAX Lots: total amount of lots reverse buy can open: 1
+Win increase: Same as margin but in equity
+or
+Win decrease: Same as margin but in equity
+AND
+Loss increase: Same as margin but in equity
+or
+Loss decrease: Same as margin but in equity
+ 
+Reverse Sell base: manual 0.06
+Max Lots: total amount of lots reverse sell can open: 1
+Win increase:
+or
+Win decrease:
+AND
+Loss increase:
+or
+Loss decrease:
+Lot sizing algorithm
+I want to be more transparent about the lot size algorithm because I haven’t made intentions on it very clear.
+Reverse orders do not open unless its counterpart has already opened an order and then moved into the negative.
+With that in mind, the reverse order lot sizing algorithm should seek to calculate the gap amount lost and make up for that loss using the known stop loss for its counterpart’s order. 
+Example: 
+Buy order enters and because it went into a negative by a certain amount, the sell reverse opens.
+The lot size for the sell order should seek to make up for the stop loss amount for the buy order. Keeping in mind that the reverse order has its own take profit and stop loss. The goal of the reverse order is to make up for the loss of its counterpart.  
+So, if the buy has a take profit at 60 pips away and a stop loss 20 pips away for a 1 to 3 ratio. 
+And the reverse order has a take profit of 80 take profit, and 20 stop loss 1:4. 
+The lot sizing algorithm needs to be aware of what it needs to do in order to ensure there is a profit made in the event that the sell reverse order reaches the buy orders stop loss. After the reverse order reaches the buy orders Stop Loss, the reverse sell order should break even and continue on to try to reach its 80-take profit. 
+The reverse order’s entire goal is to ensure that a profit is made despite its counterpart being in the negative, so I want the algorithm you create to calculate the lost sizes with that in mind. 
+The increase or decrease functions algorithm should also evaluate stop loss and take profit levels and calculate the best lot size to enter for a profit whether it’s the reverse order going into the negative, or the same direction order going into the negative. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Candles: I want the Candles color to be the SAME as trend direction regardless of the up and down, or sideways movement of the candles. King color for adx below level, Angel color for Uptrend, Dragon color for Down trend. 
+
+
+
+These are the basic functions of the EA; I didn’t include explanations of the multi time frame because they were already explained.
+The only multi time frame indicator that has all time frame indicators on 1 chart is the MH and ML levels and the BE pivot filter, and take profit levels that works with them.
+
+The other indicators will all be selected for 1 time frame.
+Example: Im on the 1-minute chart. 
+If I enable all the of take profits. 
+I have the PSAR for 1hour. 
+Enable the daily MH or ML take profit.
+Enable the 15m MA cross overs.
+Enable the Monthly MACD. Etc.
+But they all are only selected for 1 time frame for when the + function is active. 
+It is like the MH and ML in the sense that they are enable or disabled, but the MH ML take profit levels and the PSAR etc, I want them to be able to specify a take profit and have that level be respected regardless of the MACD. 
+So as the MACD is issuing out a trend continuation, Tha MA crosses will respect the MACD for trend continuation, but the other take profits will respect their take profit.
+But as a PSAR level, or MH ML level, or MA cross level etc., is reached, which ever take profit the EA runs into first, that the MACD and ADX allows to exit, will use the Swing continuous take profit to exit all trades, or the Single mode to exit the trades that opened for the 1 candle. The goal is to reach as many break-even levels as possible using the MACD and allow a take profit when the MACDs trend ends for the MA cross, not closing a bunch of false cross signals. 
+
+I hope all of this clarifies my intent. 
+The rest is just about how I want the information to be displayed. 
+
+
+
+
+
+
+
+
+For the Panel, make the background black, and the words related to King, angel or dragon colors.
+I think I covered this well in the document.
+
+Aspects related to loss trades or negative numbers etc. will be: Dragon
+Aspects related to Wins trades or positive numbers etc. will be: Angel
+Aspects related to a standstill, or balance or not traded will be: King
+
+Please Make sure the Order in the EA settings is:
+King: Grey
+Angel: Teal
+Dragon: Purple
+The brand for my business is King Angel Dragon (THA KAD) so I have to consider how everything looks because im just starting it and want to make a good impression. 
+Just don’t want it showing up like…
+Dragon
+King 
+Angle
+When the EA is complete Copyright to: JL THA KAD
+
+Again, it’s very important that you pick a formula for the indicators the does lag the other. So, when the MA cross happens the ADX isn’t 4 candles slower than the entry signal for the MAs etc, they all need to be in synch. 
+
+Im also looking into funded account challenges, so in that case I would want to make sure they’re as a setting to auto adjusts the EA risk settings to match the prop firm requirements. Like some of them do not allow trades to be open on the weekend, and do not allow trades to be open during news events, its my understanding that the EA currently doesn’t allow orders to open during the News events but im not sure it closes trades due to news events or not. Some funded challenges require you not pass a max lot size limit. If you the removal of the pip-based MH ML Pivot filters for the multi time frames covers adding this feature let me know. I’ve removed a few things and made adjustments so I’d like to maintain the value I lost by removing those things, by adding others.  6.5k is not cheap. So let me know if it matches in value or not. 
+
+Further down the road Im also thinking about make this EA a multi-currency EA, that can grab signals from multiple currencies on 1 chart. But I can not do that with the money I have now until I get paid with the completion of this EA, Im relying on this EA being complete, trading with it, and making a profit, in order to come back and pay you all for upgrades. So I need you all to do a great job because in the end you are only going to end up paying yourselves as a result of me getting paid. 
+
+If I missed something you need clarified let me know. 
+
