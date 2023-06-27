@@ -1,0 +1,768 @@
+﻿<a name="br1"></a> 
+
+Im changing the EA Name to (THA KAD: ZARIUM CORE)
+
+Also, when you all send me the copy write when it’s all ﬁnished, please copyright to: JL THA KAD
+
+Im probably also going to want a version of the EA the only allows the neat version to be displayed.
+
+This is an indicator for the strategy I have decided on.
+
+Buy Entry:
+
+Buy entries will respect “3” (Apply to Low) MAs
+
+1\. A Fast MA example: MA Period: 1 |MA Shiꢀ: x | MA Method: SESL
+
+2\. A Signal MA: This MA will be between the Fast and slow MA, and when the fact MA crosses this
+
+MA only BUY trades are allowed to Open.
+
+Example: MA Period: 2 |MA Shiꢀ: x | MA Method: SESLW
+
+3\. A Slow MA: MA Period: 4 |MA Shiꢀ: x | MA Method: SESLW
+
+When the Fast MA crosses the Slow MA A Market Order is entered. This 3<sup>rd</sup> MA will replace the
+
+Pending Deviaꢁon Stop order, when the Deviaꢁon is set to Auto. It will act as a dynamic Pending
+
+Order in a way, but will be executed as a market Order.
+
+Sell Entries Are the inverse of the Buy Entry’s and will respect 3 Apply to High MAs.
+
+Exit opꢁons:
+
+1\. Buys will close at the Sells “Signals MA” in between the Fast and Slow MA, Or Exit at the Sells
+
+“Slow MA” Entry Point. (Opꢁons are Signal or Slow) (individual color for each)
+
+2\. Sells will close at the Buys “Signal MA” in between the Fast and Slow MA,
+
+Or Exit at the Buys “Slow MA” Entry Point. (Opꢁons are Signal or Slow) (individual color for each)
+
+3\. Allow exit at MACD trend change. (new)
+
+4\. Allow buy exits at support Major Low pivot levels, Allow Sell exits at Resistance pivot levels
+
+Major High. (new) (allow this feature to specify which ꢁme period high or low to TP at.)
+
+5\. Parabolic Sar formaꢁons above and below. (new)
+
+Also, for parabolic SAR exits I want to be able to specify values smaller than 0.009, so if
+
+I want, I can specify 0.0000001
+
+6\. Manually Pressed Exit buꢂons. (Already apart of EA)
+
+-The ADX: If the ADX isn't above my speciﬁed level new trades do not open.
+
+ADX S: Uses same ꢁme frame the EA was place on.
+
+ADX +: Uses the ꢁme frame I specify 5m – monthly Opꢁons.
+
+
+
+<a name="br2"></a> 
+
+MACD will be used to verify trend conꢁnuaꢁons and direcꢁon.
+
+Example -The MACD- Fast 1 | Slow 4 | SMA Period: x -If open order MAs cross their exit before ADX level
+
+is above level, the EA should check the MACD to conﬁrm trend conꢁnuaꢁons before opening or closing
+
+orders. Look to exit orders when ADX is above X value. Trend conꢁnuaꢁon when MACD is same as.
+
+If the MACD is below 0 or the SMA Line the EA will only ALLOW sell and reverse Buy trades as long as the
+
+Price is below the non-bypassed SMA. If revers Buys are oﬀ, only Sells will open.
+
+If the MACD is above 0 or the SMA Line the EA will only ALLOW buy and reverse sell trades as long as the
+
+Price is above the non-bypassed SMA. If reverse Sells Are oﬀ only Buys will open.
+
+Opꢁon to bypass SMA and simply respect Zero line to verify trend conꢁnuaꢁon. SMA will be used to play
+
+with what the EA considers a trend conꢁnuaꢁon. Momentum above 0 or non- non bypassed SMA, will
+
+be considered bullish and Momentum Below 0 or non-bypassed SMA will be considered Bearish.
+
+Color opꢁons for MACD buy vs sell signals. So, if it's below SMA I can give it a sell color, if it is above
+
+SMA, I can give it a Buy color.
+
+
+
+<a name="br3"></a> 
+
+Also, I want a custom MACD.
+
+It's sꢁll very much like the normal MT4 macd that has 1 SMA,
+
+But I want the custom MACD seꢃngs to include a nudge opꢁon for buy and sell SMA.
+
+So, when the MA buy direcꢁon is conﬁrmed the MACD SMA reacts by going into a buy mode.
+
+Same for when sell direcꢁon conﬁrmaꢁon.
+
+Both the BUY MACD SMA and SELL MACD SMA will have a nudge parameter.
+
+That is the parameter I want to add.
+
+The added seꢃng should look something like this:
+
+Buy SMA Nudge:
+
+backwards or forwards: will move the current SMA forward or backwards
+
+forwards: 4
+
+Up or Down: will move the current SMA up or down
+
+Down: 4
+
+Sell SMA Nudge
+
+backwards or forwards: will move the current SMA forward or backwards
+
+forwards: 4
+
+Up or Down: will move the current SMA up or down
+
+Down: 4
+
+What this will do is allow me to basically have whatever SMA value I have, but nudge the SMA to avoid
+
+false signals exit.
+
+So, if I like MACD SMA: 15 but it doesn't exactly avoid enough false signals, I can nudge it up as much as I
+
+want forward or backwards much like shiꢀ works for MAs. but by smaller increments.
+
+
+
+<a name="br4"></a> 
+
+Also, for the volume bars, also show the avg high, and avg low volume of the chart to place it on, like
+
+this volume indicator shows at the top leꢀ.
+
+For instance, if I place it on the 1-minute ꢁme frame, it will show the avg 1 minute volume daily avg, and
+
+the 1m avg for the current day.
+
+So, let's say I'm sleeping, I wake up and view that chart and take a look at the volumes.
+
+I can see that while I was sleeping my buy volume reached a high of 30k 3 hours ago.
+
+Basically, keeping a record of volumes for buys and sells.
+
+Below is an example of the volume of buy and sell volumes, preꢂy much exactly how I want it to be.
+
+Sells are siꢃng on top of buys, and the Volume amount is to the right side.
+
+Also, like menꢁoned in the previous email, volumes below, and above my speciﬁed range will show up
+
+with the consolidaꢁon (king) color I specify.
+
+Sells will be the Dragon color I specify, and Buy volume will be the angel color I specify.
+
+Please update volumes to make sure the volume parameter allows me to specify sells volume range to
+
+trade and share dragon color, a buys volume range to trade and shares angel color, and the volumes
+
+below or above speciﬁed volume ranges greyed out and share king color.
+
+Please add it as part of the Bands outer border, if possible, on the chart where volumes should be, and
+
+have a value to the right like the adx has 0 - 100, displayed to the right. Im trying to make it so that the
+
+bands ﬁt as much informaꢁon on it as possible.
+
+I just don’t like how the current volume strategy doesn’t separate buys and sell volume for some reason,
+
+and that when I pull up the volumes built into mt4 all volume is same color.
+
+
+
+<a name="br5"></a> 
+
+MA S: Respects the MAs of the time frame the EA was placed on.
+
+MA +: With this set to daily, if I place the EA on the 5m time frame, I will trade the 5m
+
+using the daily fast signal slow for direction confirmation.
+
+..........................
+
+ADX: off/ on: Off bypassing ADX and trades will simply enter based on MAs. and MACD
+
+IF MACD IS ON.
+
+ADX period:xxx
+
+ADX Level:xxx
+
+Apply to: C- W
+
+The fixed minimum will automatically be whatever the level is all the way to FM100.
+
+Anything below level will be considered consolidating and will not allow trades to open.
+
+ADX S: Uses Same time frame the EA was placed on. If I place EA on 15m it will use a
+
+15-minute ADX.
+
+ADX +: Uses different time frames: 5m through monthly. example: If set to 1H, ADX
+
+confirmation for 5m would respect 1H time frames ADX.
+
+.........................
+
+MACD: off/ on: This off means Trades will simply enter based on MA and ADX if ADX is
+
+on. MACD Used to verify trend.
+
+Fast EMA:xxxx
+
+Slow EMA:xxxx
+
+MACD Signal: xxxx: Plays with what Indicator views as a trend continuation or not.
+
+Apply to: C- W
+
+MACD S: Uses Same time frame the EA was placed on. If I place EA on 15 minute it
+
+will use a 15-minute MACD
+
+MACD +: Uses different time frames and the EA was placed on. Example: If place the
+
+EA on 5m, and have MACD + set to 30m, it will still trade the 5 minute but base MACD
+
+trend continuation on the 30m time frame.
+
+........................
+
+Display option: Allows you to see the strategy, the 3 MAs, trail stops etc. etc.
+
+Hide strategy option will display a neat version of the EA, hiding the strategy and
+
+replacing it with:
+
+King: Color: Consolidating
+
+Angle: Color: Buy trend confirmed
+
+Dragon Color: Sell trend conﬁrmed.
+
+All colors associated with buy, sell, and consolidation, will be mirrored in the indicators.
+
+
+
+<a name="br6"></a> 
+
+KAD Bands: Bands as shown in the image: will follow the price, and change colors
+
+depending on the confirmed direction,
+
+The and Profits or loss made will be shown on this band, at the location of the
+
+profit/loss.
+
+Mark Profits with Green X $100
+
+Mark Loss with Black X -$100
+
+ADX: Fill in color of portions of adx that are down trend purple, portions uptrend, teal,
+
+MACD: above SMA line will be example teal, below SMA line example purple.
+
+ADX below will show as grey.
+
+Candles: The candle will change colors based on the confirmed trend direction just like
+
+the bands.
+
+Replace the Buy entry with Arrow up for Buys with the Angel color, display on the band.
+
+Replace Sell entry with Arrow down for sell, with Dragon Color, display on the band.
+
+The front of the top and bottom bands should have Big Arrows connected. The arrow
+
+should have the confirmed title written inside (King, Angel, or Dragon) In white letters.
+
+The Arrow itself will be changing colors based on the confirmed direction.
+
+Sells:
+
+~~Entry: Fast cross signal, Fast cross Slow, signal cross slow and MACD is below SMA line.~~
+
+Exit: Fast cross Signal, Fast cross slow, signal cross slow. And MACD does as well.
+
+Or
+
+Exit: When MACD crosses from above to below SMA
+
+Sells and reverse buys will be enabled if the trend is down.
+
+Or
+
+If parabolic SAR forms above price
+
+Buys:
+
+~~Entry: Fast cross signal, Fast cross Slow, signal cross slow and MACD is above SMA line.~~
+
+Exit: Fast cross Signal, Fast cross slow, signal cross slow and MACD does as well
+
+Or
+
+Exit: When MACD crosses from Below to Above SMA
+
+Or if parabolic Sar forms below price.
+
+Buys and reverse sells will be enabled if the trend is up.
+
+To conﬁrm if trend is up or down “MAs”, and “MACD will be same as cross direcꢁon” and “ADX level is
+
+above.”
+
+
+
+<a name="br7"></a> 
+
+I want to make sure the Completed version of this EA is neat and organized.
+
+King: Grey
+
+Angel: Teal
+
+Dragon: Royal Purple
+
+In that order… but maintain the ability to change these default colors.
+
+Buy signal: All buy candles will be X color even if candle is actually a sell, it’s not considered a sell color
+
+unless the signal is a sell. (Above ADX amount) (Labeled Angel)
+
+Sell Signals: All sell candles will be x color even if candle actually buy, it’s not considered a buy color
+
+unless the signal is a buy. (Above ADX amount) (Labeled Dragon)
+
+Consolidaꢁng market: All candles will have x color signifying that no new trades will open. (ADX period
+
+below speciﬁed amount) (labeled King)
+
+A Tunnel Opꢁon hides the 6 MAs and replaces them with 2 thick bands surrounding the price much like
+
+B bands, large enough so that a price text can ﬁt on the band. “King Angel Dragon” represents buy or sell
+
+or consolidaꢁon periods. I want the bands to Change colors based on the market phase as the candles
+
+do. When a proﬁt is made, the dollar amount should show up on the band in the locaꢁon the proﬁt was
+
+made with a green X, if a loss was made, the loss amount in Dollars should show up with a black X. Buys
+
+will show up on the TOP band, Sells will show up on the Boꢂom Band.
+
+I want a Panel Opꢁon to Hide or Display what the actual strategy.
+
+When hidden, the clean version above will show
+
+When displayed, I will see the actual strategy, the trail stops, the reverse line colors the trail stop colors
+
+etc.
+
+And regain the ability to specify individual colors for each.
+
+I also want to make sure I can open and minimize these indicators, So I can pull up the indicators I want
+
+to look at when I need to.
+
+
+
+<a name="br8"></a> 
+
+MACD Exit option:
+
+Also, another update to also choose to allow Exit when overall trends end.
+
+So, if EMA price crossed below MACD SMA buy trends end and trade can exit, and the EA when confirm
+
+to enter Sell and reverse buy orders only until that trend ends.
+
+This would allow the MA fast slow to be lower "example": 1 -23 MAs, but stay in trades until the Price on
+
+MACDs higher Fast and Slow "example": 50 - 400 EMAs when EMA crosses SMA.
+
+This way I can decide to exit via MA cross which we already discussed which is more of a scalping
+
+approach, or exit via MACD cross. Which is more of a swing approach.
+
+Buy Lot size options: Manual, percent margin, percent equity for each buy and sell option individually
+
+Buy lots Base: example: 10% margin
+
+Win increase: If the trade is won, increase by 4% margin
+
+
+
+<a name="br9"></a> 
+
+or
+
+Win decrease: If trade is won, decrease by 7% margin
+
+Loss increase: If trade is lost, increase by 4% margin
+
+or
+
+Loss decrease: if trade is lost, decrease by 7% margin
+
+Sell lots base: example: manual 0.1
+
+Win increase: If the trade is won, increase by 0.02
+
+or
+
+Win decrease: If the trade is won, decrease by 0.02
+
+Loss increase: if trade is lost, increase by 0.03
+
+or
+
+Loss decrease: If trade is lost, decrease by 0.07
+
+Reverse Buy base: example: equity 1%
+
+Win increase: Same as margin but in equity
+
+Win decrease: Same as margin but in equity
+
+or
+
+Loss increase: Same as margin but in equity
+
+Loss decrease: Same as margin but in equity
+
+Reverse Sell base: manual 0.06
+
+Win increase:
+
+Win decrease:
+
+or
+
+Loss increase:
+
+Loss decrease:
+
+Also Added
+
+incorporating a minimum risk-reward ratio for each trade. This ensures that the potential reward
+
+justifies the risk taken on the trade. (Added option)
+
+
+
+<a name="br10"></a> 
+
+Maximum Drawdown: Set a maximum drawdown limit for your trading account. If the account equity
+
+falls below this level, the EA will stop trading or adjust its trading parameters to reduce risk unꢁl the
+
+drawdown is under control. (Added opꢁon)
+
+Posiꢁon Sizing: Implement a posiꢁon sizing algorithm that determines the appropriate lot size for each
+
+trade based on account balance, risk tolerance, and stop loss level. This helps ensure that each trade's
+
+potenꢁal loss is within acceptable limits (Added opꢁon)
+
+Average True Range (ATR): ATR measures market volaꢁlity and can help you set a stop loss based on the
+
+average price movement. A larger ATR value suggests a wider stop loss, while a smaller ATR value
+
+indicates a narrower stop loss.
+
+To Be clear, I want the ATR to give a multiplication option. So, if atr is 40 x 1, sl would
+
+be 40, and x2 would be 80. I prefer it to allow me to use the previous low for buys and
+
+previous high for sell. as a starting point before counting, but if there is none just start
+
+from the current candle. The lot size algorithm will have to take into account this stop
+
+loss.
+
+x1
+
+x2
+
+x3
+
+x4
+
+and so on.
+
+I also want to specify a usable amount of my account balance. So let's say I
+
+somehow make 10k but only want the EA to trade as if it had 1k. It will lot size based on
+
+that 1k instead of 10k.
+
+Use ATR SL opꢁon, for Buy and Sell separately displayed in pips, (not o. oo12) just 12 pips for buys and
+
+sells, display current buy and sell ATR pip values in Bands, use buy weekly ATR number to specify the
+
+Stop loss, to do so, use the previous low or previous high as a starꢁng point, and then add on the ATR
+
+value from the posiꢁon. To be clear, I do not want the ATR displayed as a line graph, I simply want the
+
+pip number displayed. And charted on the BANDS. (If there is no previous high or low it should double
+
+the ATR value and set that as the stop loss.
+
+On the Bands I also want the Pip display of how far away the Major high and Major Low is from the
+
+price, and this should include each ꢁme frame. And lines should be drawn on the Wicks.
+
+I want to specify a distance from support and resistance where new same direcꢁon orders can not be
+
+opened., in prep for trend changes.
+
+
+
+<a name="br11"></a> 
+
+For instance, if im in a buy trend im expecꢁng the price to bounce oﬀ the MH resistance level, so I want
+
+to ﬁlter out new same direcꢁon buy orders from opening around those pivot points. This should not
+
+eﬀect oppose direcꢁon trades from opening.
+
+Example: oﬀ/on
+
+Filter distance from Resistance: 50 pips
+
+Filter distance from support: 30 pips
+
+Example: If I place the EA on the 1 minute, the 1 minute will respect each of these levels the same based
+
+on the ﬁlters. Obviously If I plan to place the EA on a higher ꢁme frame the EA will respect the High ꢁme
+
+frame Levels, not the lower ꢁme frame levels. And of course, I would opꢁmize it to respect a large pip
+
+value.
+
+Info displayed on bands for each ꢁme frame:
+
+Info Example if im on the 1-minute chart, the bands will display pip distances based on 1 minute price.
+
+1m: MH 10 pips ML 20 pip -support resistance lines drawn at those locaꢁons
+
+5m: MH 30 pip ML 50 pip- support and resistance lines at those locaꢁons
+
+15m: MH ML
+
+30m: MH ML
+
+1H: MH ML
+
+4H: MH ML
+
+Daily: MH ML
+
+Weekly: MH ML
+
+Monthly: MH ML
+
+To be clear, the MA close the trades, but this makes sure no new same direcꢁon trades open.
+
+To be clearer about the MH and ML pivot filter.
+
+Exit: on or off: Time frame: 1- monthly. (Exit doesn’t stop the filter to stoping orders from
+
+opening.)
+
+
+
+<a name="br12"></a> 
+
+MH Below Filter: 10 pips (On the 1-minute chart, EA will draw out the 5m, 15m,
+
+30m,1h,4h, daily, weekly, monthly lines Resistance lines at wick level.
+
+Example: 10 pips below these levels, buy/ reverse sell orders will not be able to open.
+
+ML Above Filter: 10 pips: (On the 1-minute chart, EA will draw out the 5m, 15m,
+
+30m,1h,4h, daily, weekly, monthly lines Resistance lines at wick level.
+
+Example: 10 pips Above these levels, sell/ reverse buy orders will not be able to open.
+
+On the 5 minute for example: 15m -monthly it will respect the above time frames, and so
+
+on...
+
+I want the option to automate the MH and ML pivot filters, using a volume profile
+
+indicator.
+
+It’s the same idea but the EA will use low volume areas as filter & breakeven point, it
+
+should display the pip distance away from Highs and lows and auto filter.
+
+Buy trends should only be affected by high pivot filters.
+
+Sell trend should only be affected by low filters
+
+These should not interrupt buy and sell entry and exits at pivot points.
+
+The volume profile indicator should start at wick levels of the high to low levels.
+
+Also, the clean version can just display a number text on the bands next to triangle, and
+
+upside-down triangle with the king color, that says how close or far from the pivot filter
+
+area the price is, and when the price reaches that Area, it should display a highlighted
+
+triangle with the Angel color for MHs, and an upside-down triangle for MLs with the
+
+dragon color. Each for the different time frames. The strategy version will show the lines
+
+and all.
+
+Also, I want the EA to have the ability to enable an auto breakeven when the price
+
+crossed above the example: 10 pip pivot filter location, or the Filter being used by the
+
+Volume profile indicator, securing whatever profit was made up to that point.
+
+So, the MH pivot filters will also be used to determine breakeven.
+
+Example: MH Pivot BE- off or on
+
+Example: ML Pivot BE - off or on
+
+Swing continuous mode/auto - Single Mode /auto
+
+Please note that the cost of this implementation will be $150.
+
+
+
+<a name="br13"></a> 
+
+Auto:
+
+"Same for lot sizing which I should you in the email before this 1."
+
+It will cost $115.
+
+"Sorry for misunderstanding, I want to be able to individually have a trail stop amount I do not want all
+
+buys, sell, reverse buy, reverse sells, to have a linked trail stop,"
+
+It will cost $95
+
+"Yes, the panel, that shows the filters and time etc., when there are a lot of candles, the candles cover
+
+the panel numbers so I can see it."
+
+It's not a panel, it's custom EA comments that cannot be modified. Building a panel to display that
+
+information will cost $125.
+
+"Please tell me how much it will cost to add a limit order option.
+
+I want to be able to specify whether I trade with stop orders, or limit orders."
+
+It will cost $325. (undecided)
+
+Indicator Cost: ???
+
+Fixes:
+
+
+
+<a name="br14"></a> 
+
+Also please fix the Alerts, the alerts as of right now, I have to turn off because it
+
+continuously alerts nonstop, and pops up a box that if closed results in more alert boxes
+
+being opened.
+
+Please fix it so that 1 box and 1 alert pops up that confirms a trade direction and that's
+
+all, no more alerts until a trend direction change occurs.
+
+Along with the panel changes I already asked for:
+
+I Also want the panel to Have the same colors as the strategy, so that everything is
+
+uniform.
+
+I want a tab in the panel to show monthly returns 1- 12
+
+And in the same tab display:
+
+Profits: (positive angel, negative dragon)
+
+Total trades:
+
+Profit Factor: (positive angel, negative dragon)
+
+Expected Payoff: (positive angel, negative dragon)
+
+Drawdowns: (positive angel, negative dragon)
+
+Drawdown percentage: (positive angel, negative dragon)
+
+and recovery factor: (positive angel, negative dragon)
+
+Also Please, the next time you respond, give me a price. I've been asking for the price
+
+for 3 weeks now.
+
+For the monthly returns display percent and $ amount for each month.
+
+And color code it the same as uptrend color for (angel) profits, and down trend color for
+
+(dragon) losses.
+
+So, I can easily identify losing and winning months.
+
+Color code profits and losses in the same manner for All positive and negative features
+
+of the EA.
+
+The buy, sell and close all orders: should all use the same panel just different tabs.
+
+MACD ADX display window:
+
+
+
+<a name="br15"></a> 
+
+Im not really sure what you all are capable of doing as far as custom indicators are
+
+concerned, but if you all are able to some how join the MACD, ADX into 1 display
+
+window, to save space that would be fine. Maybe that means ADX above level is
+
+represent differently than the line graph is displayed, if you all know of a way to
+
+incorporate the same info into 1 display a different way, please let me know, I don’t want
+
+all these windows taking up too much space.
+
+Or maybe that means the ADX alters the way the MACD appears, by simply displaying
+
+ADX on the MACD represented as a color darker color indicating adx is above in that
+
+area of the MACD, so it would maintain the ADX period and level, and maintain the
+
+trend color of the what ever the MACD color is, but make it darker angel, or darker
+
+dragon.
+
